@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>🛠️ Week 6 – Drie treinschermen voor mobiel | Lost in Tra(i)nslation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <a href="index.html" class="logo">Lost in Tra(i)nslation</a>
+            <ul>
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="week1.html">🌱 Week 1</a></li>
+                <li><a href="week2.html">🔎 Week 2</a></li>
+                <li><a href="week3.html">🎨 Week 3</a></li>
+                <li><a href="week4.html">📐 Week 4</a></li>
+                <li><a href="week5.html">🧩 Week 5</a></li>
+                <li><a href="week6.html">🛠️ Week 6</a></li>
+                <li><a href="week7.html">🚉 Week 7</a></li>
+                <li><a href="week8.html">📺 Week 8</a></li>
+                <li><a href="week9.html">🧪 Week 9</a></li>
+                <li><a href="week10.html">🎯 Week 10</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>🛠️ Week 6 – Drie treinschermen voor mobiel</h1>
+
+        <h2>Doel van deze week</h2>
+        <p>
+            Deze week begon ik met het ontwerpen van <strong>drie verschillende treinschermen voor de mobiele weergave</strong>. 
+            Het doel was om te onderzoeken hoe grote, complexe stationsinformatie kan worden vertaald naar een kleiner formaat, 
+            zonder dat de duidelijkheid verloren gaat.
+        </p>
+
+        <h2>Experimenten</h2>
+        <p>
+            Ik ontwikkelde drie conceptvarianten:
+        </p>
+
+        <ul>
+            <li><strong>Scherm 1 – Basisinformatie:</strong> vertrektijd, bestemming en spoor, compact en simpel.</li>
+            <li><strong>Scherm 2 – Meertalige weergave:</strong> dezelfde info maar in twee talen naast elkaar, met symbolen als extra ondersteuning.</li>
+            <li><strong>Scherm 3 – Routebegeleiding:</strong> meer focus op “volg het symbool”, zodat reizigers snel weten welke kant ze op moeten.</li>
+        </ul>
+
+        <p>
+            Tijdens het ontwerpen merkte ik dat sommige elementen veel te klein werden op een mobiele layout. 
+            Daarom heb ik gewerkt met grotere iconen, vettere titels en meer verticale hiërarchie.  
+            Het was een uitdaging om de schermen niet te druk te maken, maar wél volledig.
+        </p>
+
+        <h2>Reflectie</h2>
+        <p>
+            Het vertalen van stationsschermen naar mobiel bleek moeilijker dan verwacht. 
+            De beperkte ruimte verplicht je om echt keuzes te maken: wat is essentieel en wat kan weg?  
+            Toch hielpen de drie ontwerpen mij enorm om te begrijpen hoe ik informatie anders kan structureren afhankelijk van het medium.
+        </p>
+
+        <p>
+            Volgende week wil ik kijken hoe ik deze drie mobiele schermen visueel consistenter kan maken, 
+            zodat het duidelijk één familie blijft binnen het project.
+        </p>
+    </main>
+</body>
+</html>
