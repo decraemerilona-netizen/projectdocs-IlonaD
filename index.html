@@ -3,29 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <title>Projectdocumentatie – Lost in Tra(i)nslation</title>
+
+    <!-- Basisstijl voor nette layout -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f7f7;
+            color: #222;
+        }
+
+        nav {
+            background: #222;
+            padding: 12px 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        nav a:hover {
+            color: #ffd24c;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        /* Icoonstijl */
+        .week-icon {
+            font-size: 18px;
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+    </style>
 </head>
+
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="week1.html">Week 1</a></li>
-            <li><a href="week2.html">Week 2</a></li>
-            <li><a href="week3.html">Week 3</a></li>
+            <li><a href="index.html"><span class="week-icon">🏠</span> Home</a></li>
+            <li><a href="week1.html"><span class="week-icon">🌱</span> Week 1</a></li>
+            <li><a href="week2.html"><span class="week-icon">🎨</span> Week 2</a></li>
+            <li><a href="week3.html"><span class="week-icon">📐</span> Week 3</a></li>
         </ul>
     </nav>
 
     <main>
         <h1>Projectdocumentatie: Lost in Tra(i)nslation</h1>
-        <p>Welkom bij mijn projectdocumentatie voor het vak <strong>PRTT – Typografie, Kleur en Ruimte in UX Design</strong>.</p>
-        <p>In dit document beschrijf ik mijn wekelijkse evolutie in het project <em>Lost in Tra(i)nslation</em>.  
-           Elke weekpagina bevat mijn beslissingen, observaties en reflecties tijdens het ontwerpproces.</p>
+
+        <p>Welkom bij mijn projectdocumentatie voor het vak 
+            <strong>PRTT – Typografie, Kleur en Ruimte in UX Design</strong>.
+        </p>
+
+        <p>In dit document beschrijf ik mijn wekelijkse evolutie in het project 
+            <em>Lost in Tra(i)nslation</em>.  
+            Elke weekpagina bevat mijn beslissingen, observaties en reflecties tijdens het ontwerpproces.
+        </p>
 
         <h2>Inhoud</h2>
         <ul>
-            <li><a href="week1.html">Week 1 – Start en concept</a></li>
-            <li><a href="week2.html">Week 2 – Kleur en typografie</a></li>
-            <li><a href="week3.html">Week 3 – Structuur en ruimte</a></li>
+            <li><a href="week1.html"><span class="week-icon">🌱</span> Week 1 – Start en concept</a></li>
+            <li><a href="week2.html"><span class="week-icon">🎨</span> Week 2 – Kleur en typografie</a></li>
+            <li><a href="week3.html"><span class="week-icon">📐</span> Week 3 – Structuur en ruimte</a></li>
         </ul>
     </main>
 </body>
 </html>
+
+
