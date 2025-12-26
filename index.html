@@ -125,4 +125,178 @@
       width: 100%;
       display: flex;
       justify-content: space-between;
-      align-item
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .train{
+      font-size: 26px;
+      opacity: 0.9;
+    }
+
+    .nmbs-badge{
+      background: var(--nmbs);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+    }
+
+    .title{
+      width: 100%;
+      line-height: 0.98;
+    }
+
+    .title .main{
+      display:block;
+      font-weight: 800;
+      font-size: clamp(56px, 8.5vw, 120px);
+      letter-spacing: -0.04em;
+    }
+
+    .title .sub{
+      display:block;
+      font-weight: 600;
+      font-size: clamp(22px, 3.4vw, 44px);
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+      opacity: 0.92;
+    }
+
+    .year{
+      margin-top: 14px;
+      font-size: 14px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .meta{
+      display:flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .small{
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin: 0;
+      opacity: 0.75;
+      line-height: 1.6;
+    }
+
+    /* week icons: NO boxes */
+    .week-icons{
+      display:flex;
+      justify-content:center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .week-icon{
+      position: relative;
+      text-decoration: none;
+      font-size: 26px;
+      line-height: 1;
+      padding: 6px;             /* grotere klikzone zonder kader */
+      border-radius: 10px;      /* enkel voor hover area */
+      transition: transform 140ms ease, background 140ms ease;
+    }
+
+    .week-icon:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.22); /* subtiele hover, geen kader */
+    }
+
+    /* tooltip */
+    .week-icon::after{
+      content: attr(data-tip);
+      position: absolute;
+      left: 50%;
+      bottom: 42px;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      background: var(--tooltip);
+      color: #fff;
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 140ms ease, transform 140ms ease;
+    }
+
+    .week-icon:hover::after{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-2px);
+    }
+
+    /* accessibility focus */
+    .week-icon:focus-visible{
+      outline: 2px solid rgba(11,58,122,0.5);
+      outline-offset: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <!-- Background shapes -->
+    <div class="bg" aria-hidden="true">
+      <!-- Cirkels -->
+      <div class="shape circle" style="--s: 360px; left: -120px; top: 80px; --r: 12deg;"></div>
+      <div class="shape circle pink" style="--s: 220px; left: 220px; top: 40px; --r: -6deg;"></div>
+      <div class="shape circle" style="--s: 280px; right: -120px; top: 140px; --r: -10deg;"></div>
+      <div class="shape circle pink" style="--s: 180px; right: 160px; top: 240px; --r: 8deg;"></div>
+      <div class="shape circle" style="--s: 240px; left: 120px; bottom: -120px; --r: 0deg;"></div>
+
+      <!-- Vierkanten -->
+      <div class="shape square" style="--s: 120px; left: 40px; top: 260px; --r: 18deg;"></div>
+      <div class="shape square blue" style="--s: 90px; right: 80px; top: 80px; --r: -12deg;"></div>
+      <div class="shape square" style="--s: 70px; right: 40px; bottom: 120px; --r: 10deg;"></div>
+
+      <!-- Driehoeken -->
+      <div class="shape triangle blue" style="--s: 180px; right: 120px; top: 160px; --r: 12deg;"></div>
+      <div class="shape triangle" style="--s: 120px; left: 260px; bottom: 140px; --r: -8deg;"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="wrapper">
+      <div class="topline">
+        <div class="train" aria-label="Trein icoon">🚆</div>
+        <div class="nmbs-badge" aria-label="NMBS badge">NMBS</div>
+      </div>
+
+      <div class="title">
+        <span class="main">Projectdocumentatie</span>
+        <span class="sub">Lost in Tra(i)nslation</span>
+        <div class="year">2025</div>
+      </div>
+
+      <div class="meta">
+        <p class="small">Design project<br>Ilona Decraemer</p>
+        <p class="small">( Typografie / Kleur / Ruimte in UX Design )</p>
+      </div>
+
+      <div class="week-icons" aria-label="Weken">
+        <a href="week1.html" class="week-icon" data-tip="Week 1 – Start & concept">🌱</a>
+        <a href="week2.html" class="week-icon" data-tip="Week 2 – Analyse & research">🔎</a>
+        <a href="week3.html" class="week-icon" data-tip="Week 3 – Kleur & typografie">🎨</a>
+        <a href="week4.html" class="week-icon" data-tip="Week 4 – Structuur & hiërarchie">📐</a>
+        <a href="week5.html" class="week-icon" data-tip="Week 5 – Variaties & iteraties">🧩</a>
+        <a href="week6.html" class="week-icon" data-tip="Week 6 – Uitwerking in detail">🛠️</a>
+        <a href="week7.html" class="week-icon" data-tip="Week 7 – Context van het scherm">🚉</a>
+        <a href="week8.html" class="week-icon" data-tip="Week 8 – Animatie & dynamiek">📺</a>
+        <a href="week9.html" class="week-icon" data-tip="Week 9 – Feedback & testen">🧪</a>
+        <a href="week10.html" class="week-icon" data-tip="Week 10 – Finale reflectie">🎯</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
