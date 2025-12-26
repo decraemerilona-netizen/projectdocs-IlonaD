@@ -1,56 +1,211 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>🎨 Week 3 – Structuur en ruimte | Lost in Tra(i)nslation</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎨 Week 3 – Structuur en ruimte | Lost in Tra(i)nslation</title>
+
+  <!-- Zelfde font als index -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #d8e9f8;
+      --ink: #0b1d33;
+      --muted: rgba(11,29,51,0.7);
+      --line: rgba(11,29,51,0.16);
+
+      --nmbs-blue: #0b3a7a;
+      --nmbs-yellow: #ffd44d;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    main{
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 96px 24px 64px;
+      position: relative;
+    }
+
+    .wrap{
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* ===== TERUG-KNOP (STANDAARD) ===== */
+    .back-wagon{
+      position: fixed;
+      top: 22px;
+      left: 22px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(11,29,51,0.15);
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(11,29,51,0.12);
+      transition: transform 140ms ease, background 140ms ease;
+    }
+
+    .back-wagon:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.95);
+    }
+
+    .wagon{
+      width: 64px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #ffffff, #eef5ff);
+      border: 3px solid var(--nmbs-blue);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .wagon::before{
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 9px;
+      width: 10px;
+      height: 8px;
+      border-radius: 2px;
+      background: #bfe0ff;
+      box-shadow:
+        14px 0 #bfe0ff,
+        28px 0 #bfe0ff,
+        42px 0 #bfe0ff;
+    }
+
+    .wagon::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      right: 0;
+      bottom: 7px;
+      height: 5px;
+      background: var(--nmbs-yellow);
+    }
+
+    .wheel{
+      position: absolute;
+      bottom: -6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(11,29,51,0.55);
+    }
+    .wheel.w1{ left: 14px; }
+    .wheel.w2{ right: 14px; }
+
+    .back-label{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    /* ===== CONTENT ===== */
+    h1{
+      margin: 0;
+      font-size: clamp(38px, 5.5vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle{
+      margin: 10px 0 28px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .divider{
+      height: 1px;
+      background: var(--line);
+      margin: 28px 0;
+      border: none;
+    }
+
+    h2{
+      margin: 34px 0 10px 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    p{
+      margin: 0 0 16px 0;
+      line-height: 1.75;
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 75ch;
+    }
+
+    em{
+      color: var(--ink);
+      font-style: italic;
+    }
+  </style>
 </head>
 
 <body>
-    <header class="site-header">
-        <nav class="main-nav">
-            <a href="index.html" class="logo">Lost in Tra(i)nslation</a>
-            <ul>
-                <li><a href="index.html">🏠 Home</a></li>
-                <li><a href="week1.html">🌱 Week 1</a></li>
-                <li><a href="week2.html">🔎 Week 2</a></li>
-                <li><a href="week3.html">🎨 Week 3</a></li>
-                <li><a href="week4.html">📐 Week 4</a></li>
-                <li><a href="week5.html">🧩 Week 5</a></li>
-                <li><a href="week6.html">🛠️ Week 6</a></li>
-                <li><a href="week7.html">🚉 Week 7</a></li>
-                <li><a href="week8.html">📺 Week 8</a></li>
-                <li><a href="week9.html">🧪 Week 9</a></li>
-                <li><a href="week10.html">🎯 Week 10</a></li>
-            </ul>
-        </nav>
-    </header>
+  <main>
+    <!-- TERUG -->
+    <a href="index.html" class="back-wagon" aria-label="Terug naar overzicht">
+      <div class="wagon" aria-hidden="true">
+        <span class="wheel w1"></span>
+        <span class="wheel w2"></span>
+      </div>
+      <span class="back-label">Terug naar overzicht</span>
+    </a>
 
-    <main class="container">
-        <h1>🎨 Week 3 – Structuur en ruimte</h1>
+    <!-- CONTENT -->
+    <div class="wrap">
+      <h1>🎨 Week 3</h1>
+      <p class="subtitle">Structuur en ruimte</p>
 
-        <h2>Doel van deze week</h2>
-        <p>
-            Ik onderzocht hoe witruimte, margins en layout de gebruikservaring beïnvloeden.
-            Door verschillende hoeveelheden ruimte virtueel te simuleren, kon ik beter inschatten 
-            hoe informatie op treinstationschermen georganiseerd en gestructureerd moet worden.
-        </p>
+      <hr class="divider" />
 
-        <h2>Beslissingen</h2>
-        <p>
-            Ik besloot te werken met duidelijkere lettergroottes en voldoende tussenruimte 
-            tussen woorden, regels en bestemmingen.  
-            Dit zorgt ervoor dat reizigers de informatie ook op grotere afstand kunnen lezen, 
-            wat essentieel is in een druk station.
-        </p>
+      <h2>Doel van deze week</h2>
+      <p>
+        Ik onderzocht hoe witruimte, margins en layout de gebruikservaring beïnvloeden.
+        Door verschillende hoeveelheden ruimte virtueel te simuleren, kon ik beter inschatten
+        hoe informatie op treinstationschermen georganiseerd en gestructureerd moet worden.
+      </p>
 
-        <h2>Reflectie</h2>
-        <p>
-            De focus op ruimte en structuur bracht veel helderheid in mijn ontwerpkeuzes.
-            Ik merk dat goede layout niet alleen gaat over esthetiek, maar vooral over rust,
-            hiërarchie en toegankelijkheid.  
-            In de volgende fase wil ik deze inzichten toepassen in mijn mid-fidelity prototypes in Figma.
-        </p>
-    </main>
+      <h2>Beslissingen</h2>
+      <p>
+        Ik besloot te werken met duidelijkere lettergroottes en voldoende tussenruimte
+        tussen woorden, regels en bestemmingen.
+        Dit zorgt ervoor dat reizigers de informatie ook op grotere afstand kunnen lezen,
+        wat essentieel is in een druk station.
+      </p>
+
+      <h2>Reflectie</h2>
+      <p>
+        De focus op ruimte en structuur bracht veel helderheid in mijn ontwerpkeuzes.
+        Ik merk dat goede layout niet alleen gaat over esthetiek, maar vooral over rust,
+        hiërarchie en toegankelijkheid.
+        In de volgende fase wil ik deze inzichten toepassen in mijn mid-fidelity prototypes in Figma.
+      </p>
+    </div>
+  </main>
 </body>
 </html>
