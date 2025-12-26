@@ -5,23 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projectdocumentatie – Lost in Tra(i)nslation</title>
 
-  <!-- Modern signage-achtige font -->
+  <!-- Modern NMBS-achtige font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg: #cfe3f4;              /* lichtblauw basis */
+      /* NMBS-ish palette */
+      --bg: #bcd9ff;            /* effen lichtblauw */
       --ink: #0b1d33;
       --muted: rgba(11,29,51,0.70);
 
-      --nmbs: #0b3a7a;            /* donkerblauw accent */
-      --tooltip: rgba(11,29,51,0.92);
+      --nmbs-blue: #0b3a7a;     /* donker NMBS-blauw */
+      --nmbs-blue2: #1f6fff;    /* helder blauw accent */
+      --nmbs-yellow: #ffe08a;   /* lichter geel */
 
-      /* poster-accenten (pink/blauw) */
-      --pink: #ff3aa6;
-      --blue: #2b73ff;
+      --tooltip: rgba(11,29,51,0.92);
+      --shadow: 0 18px 40px rgba(11,29,51,0.10);
     }
 
     *{ box-sizing: border-box; }
@@ -39,127 +40,61 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 64px 24px;
+      padding: 64px 24px 34px;
       position: relative;
     }
 
-    /* =============== BACKGROUND SHAPES =============== */
-    .bg{
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    /* zachte “paper” vibe */
-    .bg::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.55) 0 22%, transparent 23%),
-        radial-gradient(circle at 80% 25%, rgba(255,255,255,0.45) 0 18%, transparent 19%),
-        radial-gradient(circle at 35% 85%, rgba(255,255,255,0.35) 0 20%, transparent 21%),
-        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(0,0,0,0));
-      opacity: 0.9;
-    }
-
-    .shape{
-      position: absolute;
-      opacity: 0.22;
-      filter: blur(0.2px);
-      transform: rotate(var(--r, 0deg));
-    }
-
-    .circle{
-      width: var(--s, 220px);
-      height: var(--s, 220px);
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), rgba(255,255,255,0) 60%),
-                  rgba(43,115,255,0.55);
-    }
-
-    .circle.pink{
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), rgba(255,255,255,0) 60%),
-                  rgba(255,58,166,0.55);
-    }
-
-    .square{
-      width: var(--s, 150px);
-      height: var(--s, 150px);
-      border-radius: 18px;
-      background: rgba(255,58,166,0.55);
-    }
-
-    .square.blue{
-      background: rgba(43,115,255,0.55);
-    }
-
-    .triangle{
-      width: 0;
-      height: 0;
-      border-left: calc(var(--s, 160px) / 2) solid transparent;
-      border-right: calc(var(--s, 160px) / 2) solid transparent;
-      border-bottom: var(--s, 160px) solid rgba(255,58,166,0.55);
-      border-radius: 6px;
-    }
-
-    .triangle.blue{
-      border-bottom-color: rgba(43,115,255,0.55);
-    }
-
-    /* =============== CONTENT =============== */
     .wrapper{
       width: min(1200px, 100%);
       position: relative;
       z-index: 2;
       display: flex;
       flex-direction: column;
-      gap: 34px;
+      gap: 26px;
       align-items: center;
       text-align: center;
     }
 
-    /* top corners */
     .topline{
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
     }
 
-    .train{
-      font-size: 26px;
+    .train-top{
+      font-size: 22px;
       opacity: 0.9;
     }
 
     .nmbs-badge{
-      background: var(--nmbs);
+      background: var(--nmbs-blue);
       color: white;
       padding: 8px 14px;
       border-radius: 999px;
       font-weight: 800;
       letter-spacing: 0.08em;
       font-size: 12px;
+      box-shadow: var(--shadow);
     }
 
     .title{
       width: 100%;
-      line-height: 0.98;
+      line-height: 1.02;
+      margin-top: 10px;
     }
 
     .title .main{
       display:block;
       font-weight: 800;
-      font-size: clamp(56px, 8.5vw, 120px);
+      font-size: clamp(52px, 7.5vw, 110px);
       letter-spacing: -0.04em;
     }
 
     .title .sub{
       display:block;
       font-weight: 600;
-      font-size: clamp(22px, 3.4vw, 44px);
+      font-size: clamp(22px, 3vw, 40px);
       letter-spacing: -0.02em;
       margin-top: 10px;
       opacity: 0.92;
@@ -190,36 +125,35 @@
       line-height: 1.6;
     }
 
-    /* week icons: NO boxes */
-    .week-icons{
-      display:flex;
-      justify-content:center;
-      gap: 18px;
+    /* ======= Train wagons navigation ======= */
+    .rail{
+      width: min(1200px, 100%);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
       flex-wrap: wrap;
-      margin-top: 12px;
+      gap: 16px;
+      margin-top: 14px;
+      padding-bottom: 10px;
     }
 
-    .week-icon{
-      position: relative;
+    .wagon{
+      width: 120px;
       text-decoration: none;
-      font-size: 26px;
-      line-height: 1;
-      padding: 6px;             /* grotere klikzone zonder kader */
-      border-radius: 10px;      /* enkel voor hover area */
-      transition: transform 140ms ease, background 140ms ease;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
     }
 
-    .week-icon:hover{
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.22); /* subtiele hover, geen kader */
-    }
-
-    /* tooltip */
-    .week-icon::after{
+    /* Tooltip only on hover */
+    .wagon::after{
       content: attr(data-tip);
       position: absolute;
       left: 50%;
-      bottom: 42px;
+      bottom: 118px;
       transform: translateX(-50%);
       white-space: nowrap;
       background: var(--tooltip);
@@ -230,47 +164,119 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 140ms ease, transform 140ms ease;
+      z-index: 10;
     }
 
-    .week-icon:hover::after{
+    .wagon:hover::after{
       opacity: 1;
       transform: translateX(-50%) translateY(-2px);
     }
 
-    /* accessibility focus */
-    .week-icon:focus-visible{
-      outline: 2px solid rgba(11,58,122,0.5);
-      outline-offset: 4px;
+    .wagon:focus-visible{
+      outline: 3px solid rgba(11,58,122,0.35);
+      outline-offset: 6px;
+      border-radius: 14px;
+    }
+
+    .wagon-art{
+      width: 120px;
+      height: 64px;
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.25)),
+        linear-gradient(90deg, var(--nmbs-blue), var(--nmbs-blue2));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* "Windows" */
+    .wagon-art .win{
+      position:absolute;
+      top: 18px;
+      width: 18px;
+      height: 14px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.75);
+      opacity: 0.9;
+    }
+    .wagon-art .w1{ left: 14px; }
+    .wagon-art .w2{ left: 38px; }
+    .wagon-art .w3{ left: 62px; }
+    .wagon-art .w4{ left: 86px; }
+
+    /* "Yellow band" */
+    .wagon-art .band{
+      position:absolute;
+      left: 0;
+      right: 0;
+      bottom: 14px;
+      height: 10px;
+      background: var(--nmbs-yellow);
+      opacity: 0.95;
+    }
+
+    /* Wheels */
+    .wagon-art .wheel{
+      position:absolute;
+      bottom: -8px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(11,29,51,0.35);
+      box-shadow: inset 0 0 0 4px rgba(255,255,255,0.35);
+    }
+    .wagon-art .wh1{ left: 22px; }
+    .wagon-art .wh2{ right: 22px; }
+
+    /* small coupling */
+    .wagon-art .hook{
+      position:absolute;
+      right: -10px;
+      top: 30px;
+      width: 16px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(11,29,51,0.25);
+    }
+
+    .label{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* Locomotive (first item) slightly different */
+    .loco .wagon-art{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.25)),
+        linear-gradient(90deg, var(--nmbs-blue2), var(--nmbs-blue));
+    }
+    .loco .wagon-art .nose{
+      position:absolute;
+      left: -18px;
+      top: 12px;
+      width: 36px;
+      height: 40px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    /* Bottom tiny train icon */
+    .mini-train{
+      margin-top: 6px;
+      font-size: 18px;
+      opacity: 0.9;
     }
   </style>
 </head>
 
 <body>
   <main>
-    <!-- Background shapes -->
-   <div class="bg" aria-hidden="true">
-
-  <!-- GROTE CIRKELS -->
-  <div class="shape circle pink" style="--s: 520px; left: -220px; top: -120px;"></div>
-  <div class="shape circle" style="--s: 420px; right: -180px; top: 80px;"></div>
-  <div class="shape circle pink" style="--s: 360px; left: 20%; bottom: -180px;"></div>
-
-  <!-- VIEREKANTEN -->
-  <div class="shape square blue" style="--s: 240px; left: 60px; top: 60%; --r: 18deg;"></div>
-  <div class="shape square" style="--s: 180px; right: 120px; bottom: 120px; --r: -12deg;"></div>
-
-  <!-- DRIEHOEKEN -->
-  <div class="shape triangle blue" style="--s: 360px; right: -120px; top: 40%; --r: 12deg;"></div>
-  <div class="shape triangle" style="--s: 260px; left: 45%; top: -120px; --r: -8deg;"></div>
-
-</div>
-
-    </div>
-
-    <!-- Content -->
     <div class="wrapper">
       <div class="topline">
-        <div class="train" aria-label="Trein icoon">🚆</div>
+        <div class="train-top" aria-label="Trein icoon">🚆</div>
         <div class="nmbs-badge" aria-label="NMBS badge">NMBS</div>
       </div>
 
@@ -284,61 +290,113 @@
         <p class="small">Design project<br>Ilona Decraemer</p>
       </div>
 
-    <div class="week-icons">
-  <a href="week1.html" class="week-icon" data-tip="Week 1 – Start & concept">
-    <span class="icon">🌱</span>
-    <span class="label">Week 1</span>
-  </a>
+      <!-- Train wagons: each wagon is a week -->
+      <nav class="rail" aria-label="Weken navigatie als treinwagons">
+        <!-- Locomotive / Week 1 -->
+        <a class="wagon loco" href="week1.html" data-tip="Week 1 – Start & concept">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="nose"></div>
+            <div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 1</div>
+        </a>
 
-  <a href="week2.html" class="week-icon" data-tip="Week 2 – Analyse & research">
-    <span class="icon">🔎</span>
-    <span class="label">Week 2</span>
-  </a>
+        <a class="wagon" href="week2.html" data-tip="Week 2 – Analyse & research">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 2</div>
+        </a>
 
-  <a href="week3.html" class="week-icon" data-tip="Week 3 – Kleur & typografie">
-    <span class="icon">🎨</span>
-    <span class="label">Week 3</span>
-  </a>
+        <a class="wagon" href="week3.html" data-tip="Week 3 – Kleur & typografie">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 3</div>
+        </a>
 
-  <a href="week4.html" class="week-icon" data-tip="Week 4 – Structuur & hiërarchie">
-    <span class="icon">📐</span>
-    <span class="label">Week 4</span>
-  </a>
+        <a class="wagon" href="week4.html" data-tip="Week 4 – Structuur & hiërarchie">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 4</div>
+        </a>
 
-  <a href="week5.html" class="week-icon" data-tip="Week 5 – Variaties & iteraties">
-    <span class="icon">🧩</span>
-    <span class="label">Week 5</span>
-  </a>
+        <a class="wagon" href="week5.html" data-tip="Week 5 – Variaties & iteraties">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 5</div>
+        </a>
 
-  <a href="week6.html" class="week-icon" data-tip="Week 6 – Uitwerking in detail">
-    <span class="icon">🛠️</span>
-    <span class="label">Week 6</span>
-  </a>
+        <a class="wagon" href="week6.html" data-tip="Week 6 – Uitwerking in detail">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 6</div>
+        </a>
 
-  <a href="week7.html" class="week-icon" data-tip="Week 7 – Context van het scherm">
-    <span class="icon">🚉</span>
-    <span class="label">Week 7</span>
-  </a>
+        <a class="wagon" href="week7.html" data-tip="Week 7 – Context van het scherm">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 7</div>
+        </a>
 
-  <a href="week8.html" class="week-icon" data-tip="Week 8 – Animatie & dynamiek">
-    <span class="icon">📺</span>
-    <span class="label">Week 8</span>
-  </a>
+        <a class="wagon" href="week8.html" data-tip="Week 8 – Animatie & dynamiek">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 8</div>
+        </a>
 
-  <a href="week9.html" class="week-icon" data-tip="Week 9 – Feedback & testen">
-    <span class="icon">🧪</span>
-    <span class="label">Week 9</span>
-  </a>
+        <a class="wagon" href="week9.html" data-tip="Week 9 – Feedback & testen">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 9</div>
+        </a>
 
-  <a href="week10.html" class="week-icon" data-tip="Week 10 – Finale reflectie">
-    <span class="icon">🎯</span>
-    <span class="label">Week 10</span>
-  </a>
-</div>
-      </div>
+        <a class="wagon" href="week10.html" data-tip="Week 10 – Finale reflectie">
+          <div class="wagon-art" aria-hidden="true">
+            <div class="win w1"></div><div class="win w2"></div><div class="win w3"></div><div class="win w4"></div>
+            <div class="band"></div>
+            <div class="wheel wh1"></div><div class="wheel wh2"></div>
+            <div class="hook"></div>
+          </div>
+          <div class="label">Week 10</div>
+        </a>
+      </nav>
+
+      <div class="mini-train" aria-label="Kleine trein onderaan">🚆</div>
     </div>
   </main>
 </body>
 </html>
-
-
