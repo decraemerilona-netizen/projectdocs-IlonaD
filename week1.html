@@ -5,26 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>🌱 Week 1 – Start en concept | Lost in Tra(i)nslation</title>
 
-  <!-- Modern NMBS-achtig font (zelfde als index) -->
+  <!-- Zelfde font als index -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* zelfde vibe als index */
-      --bg: #d8e9f8;                 /* lichtblauw */
-      --ink: #0b1d33;                /* donker */
-      --muted: rgba(11,29,51,0.70);
+      --bg: #d8e9f8;
+      --ink: #0b1d33;
+      --muted: rgba(11,29,51,0.7);
       --line: rgba(11,29,51,0.16);
 
-      /* NMBS accenten */
       --nmbs-blue: #0b3a7a;
       --nmbs-yellow: #ffd44d;
-
-      /* shapes */
-      --shape-light: rgba(11,29,51,0.08);
-      --shape-blue: rgba(11,58,122,0.14);
     }
 
     *{ box-sizing: border-box; }
@@ -35,91 +29,125 @@
       background: var(--bg);
       color: var(--ink);
       font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      overflow-x: hidden;
     }
 
     main{
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 72px 24px;
+      padding: 96px 24px 64px;
       position: relative;
     }
 
-    /* ====== ACHTERGROND VORMEN (zijkanten, subtiel) ====== */
-    .shape{
-      position: absolute;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .circle{
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: var(--shape-light);
-      top: 90px;
-      left: -190px;
-    }
-
-    .square{
-      width: 260px;
-      height: 260px;
-      background: var(--shape-blue);
-      top: 55%;
-      right: -140px;
-      transform: rotate(14deg);
-      border-radius: 22px;
-    }
-
-    .triangle{
-      width: 0;
-      height: 0;
-      border-left: 200px solid transparent;
-      border-right: 200px solid transparent;
-      border-bottom: 320px solid rgba(255, 212, 77, 0.18); /* zacht geel accent */
-      top: -150px;
-      right: 120px;
-      transform: rotate(-8deg);
-    }
-
-    /* ====== CONTENT ====== */
     .wrap{
       width: 100%;
       max-width: 900px;
-      position: relative;
-      z-index: 2;
     }
 
-    /* Titel */
-    .week-title{
+    /* ===== TERUG-KNOP (STANDAARD) ===== */
+    .back-wagon{
+      position: fixed;
+      top: 22px;
+      left: 22px;
+      z-index: 10;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(11,29,51,0.15);
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: 0 8px 20px rgba(11,29,51,0.12);
+      transition: transform 140ms ease, background 140ms ease;
+    }
+
+    .back-wagon:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.95);
+    }
+
+    .wagon{
+      width: 64px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #ffffff, #eef5ff);
+      border: 3px solid var(--nmbs-blue);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .wagon::before{
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 9px;
+      width: 10px;
+      height: 8px;
+      border-radius: 2px;
+      background: #bfe0ff;
+      box-shadow:
+        14px 0 #bfe0ff,
+        28px 0 #bfe0ff,
+        42px 0 #bfe0ff;
+    }
+
+    .wagon::after{
+      content:"";
+      position:absolute;
+      left: 0;
+      right: 0;
+      bottom: 7px;
+      height: 5px;
+      background: var(--nmbs-yellow);
+    }
+
+    .wheel{
+      position: absolute;
+      bottom: -6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(11,29,51,0.55);
+    }
+    .wheel.w1{ left: 14px; }
+    .wheel.w2{ right: 14px; }
+
+    .back-label{
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    /* ===== CONTENT ===== */
+    h1{
       margin: 0;
       font-size: clamp(38px, 5.5vw, 64px);
       font-weight: 800;
       letter-spacing: -0.04em;
-      line-height: 1.05;
     }
 
     .subtitle{
-      margin: 10px 0 26px 0;
+      margin: 10px 0 28px 0;
       font-size: 18px;
       font-weight: 600;
       color: var(--muted);
-      letter-spacing: -0.01em;
     }
 
     .divider{
       height: 1px;
       background: var(--line);
-      margin: 26px 0;
+      margin: 28px 0;
       border: none;
     }
 
     h2{
-      margin: 32px 0 10px 0;
+      margin: 34px 0 10px 0;
       font-size: 20px;
       font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     p{
@@ -131,125 +159,26 @@
     }
 
     em{
-      font-style: italic;
       color: var(--ink);
-    }
-
-    /* ====== KLEIN KLIKBAAR WAGONNETJE (terug naar index) ====== */
-    .back-wagon{
-      position: fixed;
-      top: 22px;
-      right: 22px;
-      z-index: 10;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      user-select: none;
-    }
-
-    .wagon{
-      width: 86px;
-      height: 44px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, #ffffff, #eef5ff);
-      border: 3px solid var(--nmbs-blue);
-      position: relative;
-      box-shadow: 0 10px 22px rgba(11,29,51,0.10);
-      transition: transform 140ms ease;
-      overflow: hidden;
-    }
-
-    /* ramen */
-    .wagon::before{
-      content: "";
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      width: 14px;
-      height: 10px;
-      border-radius: 3px;
-      background: #bfe0ff;
-      box-shadow:
-        18px 0 #bfe0ff,
-        36px 0 #bfe0ff,
-        54px 0 #bfe0ff;
-    }
-
-    /* gele band */
-    .wagon::after{
-      content:"";
-      position:absolute;
-      left: 0;
-      right: 0;
-      bottom: 9px;
-      height: 6px;
-      background: var(--nmbs-yellow);
-    }
-
-    /* wieltjes */
-    .wheel{
-      position: absolute;
-      bottom: -6px;
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: rgba(11,29,51,0.55);
-      box-shadow: inset 0 0 0 3px rgba(255,255,255,0.45);
-    }
-    .wheel.w1{ left: 18px; }
-    .wheel.w2{ right: 18px; }
-
-    /* tooltip op hover */
-    .back-wagon .tip{
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(11,29,51,0.75);
-      background: rgba(255,255,255,0.55);
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(11,29,51,0.12);
-      opacity: 0;
-      transform: translateY(2px);
-      transition: opacity 140ms ease, transform 140ms ease;
-      white-space: nowrap;
-    }
-
-    .back-wagon:hover .wagon{ transform: translateY(-2px); }
-    .back-wagon:hover .tip{
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .back-wagon:focus-visible{
-      outline: 3px solid rgba(11,58,122,0.35);
-      outline-offset: 6px;
-      border-radius: 14px;
+      font-style: italic;
     }
   </style>
 </head>
 
 <body>
   <main>
-
-    <!-- klikbaar wagonnetje: TERUG -->
-    <a class="back-wagon" href="index.html" aria-label="Terug naar startpagina">
+    <!-- TERUG -->
+    <a href="index.html" class="back-wagon" aria-label="Terug naar overzicht">
       <div class="wagon" aria-hidden="true">
         <span class="wheel w1"></span>
         <span class="wheel w2"></span>
       </div>
-      <span class="tip">Terug</span>
+      <span class="back-label">Terug naar overzicht</span>
     </a>
 
-    <!-- Achtergrond vormen -->
-    <div class="shape circle"></div>
-    <div class="shape square"></div>
-    <div class="shape triangle"></div>
-
-    <!-- Content -->
+    <!-- CONTENT -->
     <div class="wrap">
-      <h1 class="week-title">🌱 Week 1</h1>
+      <h1>🌱 Week 1</h1>
       <p class="subtitle">Start en concept</p>
 
       <hr class="divider" />
@@ -267,15 +196,14 @@
         Ik besloot te werken met een eenvoudige informatiestructuur waarin
         Nederlands, Frans en Engels in één scherm gecombineerd worden. Het doel is
         om taalverwarring te beperken door kleur en iconen te gebruiken als extra
-        communicatiemiddelen. Reizigers moeten in één oogopslag het symbool kunnen
-        volgen: dit symbool wijst de weg, ongeacht de taal.
+        communicatiemiddelen.
       </p>
 
       <h2>Reflectie</h2>
       <p>
         Ik merk dat het moeilijk is om alle talen in één scherm overzichtelijk te
         houden. Volgende week wil ik experimenteren met visuele hiërarchie via
-        lettertypes en witruimte, zodat bepaalde informatie duidelijker naar voren komt.
+        lettertypes en witruimte.
       </p>
     </div>
   </main>
