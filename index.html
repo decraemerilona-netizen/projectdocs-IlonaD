@@ -1,169 +1,128 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projectdocumentatie – Lost in Tra(i)nslation</title>
 
-  <!-- Google Fonts -->
+  <!-- Modern signage-achtige font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* BASIS */
-    body {
+    :root{
+      --bg: #cfe3f4;              /* lichtblauw basis */
+      --ink: #0b1d33;
+      --muted: rgba(11,29,51,0.70);
+
+      --nmbs: #0b3a7a;            /* donkerblauw accent */
+      --tooltip: rgba(11,29,51,0.92);
+
+      /* poster-accenten (pink/blauw) */
+      --pink: #ff3aa6;
+      --blue: #2b73ff;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
       margin: 0;
       min-height: 100vh;
-      background-color: #cfe3f4; /* effen lichtblauw */
-      color: #0b1d33;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      overflow-x: hidden;
     }
 
-    main {
+    main{
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 24px;
+      display: grid;
+      place-items: center;
+      padding: 64px 24px;
+      position: relative;
     }
 
-    .wrapper {
-      width: 100%;
-      max-width: 1200px;
+    /* =============== BACKGROUND SHAPES =============== */
+    .bg{
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* zachte “paper” vibe */
+    .bg::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.55) 0 22%, transparent 23%),
+        radial-gradient(circle at 80% 25%, rgba(255,255,255,0.45) 0 18%, transparent 19%),
+        radial-gradient(circle at 35% 85%, rgba(255,255,255,0.35) 0 20%, transparent 21%),
+        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(0,0,0,0));
+      opacity: 0.9;
+    }
+
+    .shape{
+      position: absolute;
+      opacity: 0.22;
+      filter: blur(0.2px);
+      transform: rotate(var(--r, 0deg));
+    }
+
+    .circle{
+      width: var(--s, 220px);
+      height: var(--s, 220px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), rgba(255,255,255,0) 60%),
+                  rgba(43,115,255,0.55);
+    }
+
+    .circle.pink{
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), rgba(255,255,255,0) 60%),
+                  rgba(255,58,166,0.55);
+    }
+
+    .square{
+      width: var(--s, 150px);
+      height: var(--s, 150px);
+      border-radius: 18px;
+      background: rgba(255,58,166,0.55);
+    }
+
+    .square.blue{
+      background: rgba(43,115,255,0.55);
+    }
+
+    .triangle{
+      width: 0;
+      height: 0;
+      border-left: calc(var(--s, 160px) / 2) solid transparent;
+      border-right: calc(var(--s, 160px) / 2) solid transparent;
+      border-bottom: var(--s, 160px) solid rgba(255,58,166,0.55);
+      border-radius: 6px;
+    }
+
+    .triangle.blue{
+      border-bottom-color: rgba(43,115,255,0.55);
+    }
+
+    /* =============== CONTENT =============== */
+    .wrapper{
+      width: min(1200px, 100%);
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
+      gap: 34px;
+      align-items: center;
+      text-align: center;
     }
 
-    /* TITEL */
-    .title {
-      position: relative;
-      line-height: 0.9;
+    /* top corners */
+    .topline{
       width: 100%;
-    }
-
-    .title .serif {
-      display: block;
-      font-family: "Playfair Display", serif;
-      font-weight: 700;
-      font-size: clamp(72px, 12vw, 180px);
-      letter-spacing: -1.5px;
-    }
-
-    .title .script {
-      display: block;
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(80px, 13vw, 200px);
-      margin-top: 12px;
-    }
-
-    .title .year {
-      position: absolute;
-      top: 0;
-      right: 0;
-      font-family: "Playfair Display", serif;
-      font-size: 16px;
-      opacity: 0.7;
-    }
-
-    /* ONDERSTE INFO */
-    .meta {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .small {
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin: 0;
-      opacity: 0.7;
-    }
-
-    /* WEEK SYMBOLEN */
-    .week-icons {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 40px;
-      flex-wrap: wrap;
-    }
-
-    .week-icon {
-      position: relative;
-      font-size: 26px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-
-    .week-icon:hover {
-      transform: translateY(-2px);
-    }
-
-    /* TOOLTIP */
-    .week-icon::after {
-      content: attr(data-tip);
-      position: absolute;
-      left: 50%;
-      bottom: 36px;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      background: rgba(0, 0, 0, 0.75);
-      color: #fff;
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.15s ease;
-    }
-
-    .week-icon:hover::after {
-      opacity: 1;
-    }
-  </style>
-</head>
-
-<body>
-  <main>
-    <div class="wrapper">
-
-      <!-- TITEL -->
-      <div class="title">
-        <span class="serif">Project</span>
-        <span class="serif">documentatie</span>
-        <span class="script">Lost in Tra(i)nslation</span>
-        <span class="year">2025</span>
-      </div>
-
-      <!-- INFO ONDERAAN -->
-      <div class="meta">
-        <p class="small">Design project<br>Ilona Decraemer</p>
-        <p class="small">( Typografie / Kleur / Ruimte in UX Design )</p>
-      </div>
-
-      <!-- SYMBOLEN -->
-      <div class="week-icons">
-        <a href="week1.html" class="week-icon" data-tip="Week 1 – Start & concept">🌱</a>
-        <a href="week2.html" class="week-icon" data-tip="Week 2 – Analyse & research">🔎</a>
-        <a href="week3.html" class="week-icon" data-tip="Week 3 – Kleur & typografie">🎨</a>
-        <a href="week4.html" class="week-icon" data-tip="Week 4 – Structuur & hiërarchie">📐</a>
-        <a href="week5.html" class="week-icon" data-tip="Week 5 – Variaties & iteraties">🧩</a>
-        <a href="week6.html" class="week-icon" data-tip="Week 6 – Uitwerking in detail">🛠️</a>
-        <a href="week7.html" class="week-icon" data-tip="Week 7 – Context van het scherm">🚉</a>
-        <a href="week8.html" class="week-icon" data-tip="Week 8 – Animatie & dynamiek">📺</a>
-        <a href="week9.html" class="week-icon" data-tip="Week 9 – Feedback & testen">🧪</a>
-        <a href="week10.html" class="week-icon" data-tip="Week 10 – Finale reflectie">🎯</a>
-      </div>
-
-    </div>
-  </main>
-</body>
-</html>
+      align-item
