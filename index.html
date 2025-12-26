@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projectdocumentatie – Lost in Tra(i)nslation</title>
 
   <!-- Modern NMBS-achtig font -->
@@ -12,11 +12,11 @@
 
   <style>
     :root{
-      --bg: #cfe3f4;
+      --bg: #d8e9f8;
       --ink: #0b1d33;
-      --muted: rgba(11,29,51,0.7);
       --nmbs-blue: #0b3a7a;
-      --tooltip: rgba(11,29,51,0.95);
+      --nmbs-yellow: #ffd44d;
+      --muted: rgba(11,29,51,0.65);
     }
 
     *{ box-sizing: border-box; }
@@ -24,17 +24,16 @@
     body{
       margin: 0;
       min-height: 100vh;
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: "Inter", system-ui, sans-serif;
       background: var(--bg);
       color: var(--ink);
-      overflow-x: hidden;
     }
 
     main{
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 64px 24px 40px;
+      padding: 64px 24px;
     }
 
     .wrapper{
@@ -43,37 +42,29 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 28px;
+      gap: 32px;
       text-align: center;
     }
 
     /* Header */
-    .topline{
+    .top{
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .train-icon{
-      font-size: 22px;
-    }
-
-    .nmbs{
+    .badge{
       background: var(--nmbs-blue);
       color: #fff;
       padding: 8px 14px;
       border-radius: 999px;
-      font-weight: 800;
       font-size: 12px;
+      font-weight: 800;
       letter-spacing: 0.08em;
     }
 
-    /* Title */
-    .title{
-      line-height: 1.05;
-    }
-
+    /* Titel */
     .title .main{
       font-size: clamp(52px, 8vw, 110px);
       font-weight: 800;
@@ -85,97 +76,111 @@
       font-size: clamp(22px, 3vw, 40px);
       font-weight: 600;
       opacity: 0.9;
-      display: block;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .year{
-      margin-top: 14px;
+      margin-top: 10px;
       font-size: 14px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      opacity: 0.7;
+      opacity: 0.6;
     }
 
     .meta{
       font-size: 12px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      opacity: 0.75;
+      opacity: 0.7;
     }
 
-    /* ===== TRAIN WAGONS ===== */
-    .train-rail{
+    /* ===== TREIN ===== */
+    .rail{
       width: 100%;
       display: flex;
       align-items: flex-end;
       gap: 0;
       overflow-x: auto;
-      padding: 18px 0 10px;
-      scroll-snap-type: x mandatory;
-    }
-
-    .train-rail::-webkit-scrollbar{
-      height: 8px;
-    }
-
-    .train-rail::-webkit-scrollbar-thumb{
-      background: rgba(11,29,51,0.25);
-      border-radius: 999px;
+      padding: 20px 0;
     }
 
     .wagon{
-      position: relative;
       flex: 0 0 auto;
-      scroll-snap-align: start;
+      width: 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-decoration: none;
+      color: var(--ink);
     }
 
-    .wagon img{
-      height: 60px;
-      width: auto;
-      display: block;
-      margin-right: -24px;
-      transition: transform 140ms ease;
+    .wagon-body{
+      width: 110px;
+      height: 56px;
+      background: linear-gradient(
+        180deg,
+        #ffffff,
+        #e6f0fa
+      );
+      border-radius: 12px;
+      border: 3px solid var(--nmbs-blue);
+      position: relative;
+      transition: transform 0.15s ease, background 0.15s ease;
     }
 
-    .wagon:hover img{
-      transform: translateY(-2px);
-    }
-
-    /* Tooltip */
-    .wagon::after{
-      content: attr(data-tip);
+    /* ramen */
+    .wagon-body::before{
+      content: "";
       position: absolute;
-      left: 50%;
-      bottom: 72px;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      background: var(--tooltip);
-      color: #fff;
-      font-size: 12px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 140ms ease, transform 140ms ease;
+      top: 16px;
+      left: 14px;
+      width: 16px;
+      height: 12px;
+      background: #bfe0ff;
+      border-radius: 3px;
+      box-shadow:
+        22px 0 #bfe0ff,
+        44px 0 #bfe0ff,
+        66px 0 #bfe0ff;
     }
 
-    .wagon:hover::after{
-      opacity: 1;
-      transform: translateX(-50%) translateY(-2px);
+    /* gele NMBS-lijn */
+    .wagon-body::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      height: 6px;
+      background: var(--nmbs-yellow);
     }
 
-    .wagon:focus-visible{
-      outline: 3px solid rgba(11,58,122,0.4);
-      outline-offset: 6px;
-      border-radius: 10px;
+    /* wielen */
+    .wheel{
+      width: 12px;
+      height: 12px;
+      background: var(--ink);
+      border-radius: 50%;
+      margin-top: -6px;
     }
 
-    .mini-train{
+    .label{
       margin-top: 6px;
-      font-size: 18px;
-      opacity: 0.9;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    /* hover */
+    .wagon:hover .wagon-body{
+      transform: translateY(-3px);
+      background: #ffffff;
+    }
+
+    /* kleine koppeling */
+    .wagon:not(:last-child) .wagon-body{
+      margin-right: -10px;
     }
   </style>
 </head>
@@ -184,14 +189,14 @@
   <main>
     <div class="wrapper">
 
-      <div class="topline">
-        <div class="train-icon">🚆</div>
-        <div class="nmbs">NMBS</div>
+      <div class="top">
+        <div>🚆</div>
+        <div class="badge">NMBS</div>
       </div>
 
       <div class="title">
         <span class="main">Projectdocumentatie</span>
-        <span class="sub">Lost in Tra(i)nslation</span>
+        <div class="sub">Lost in Tra(i)nslation</div>
         <div class="year">2025</div>
       </div>
 
@@ -200,20 +205,18 @@
       </div>
 
       <!-- TREIN MET WAGONS -->
-      <nav class="train-rail" aria-label="Weken als treinwagons">
-        <a class="wagon" href="week1.html" data-tip="Week 1 – Start & concept"><img src="wagon.webp" alt="Week 1"></a>
-        <a class="wagon" href="week2.html" data-tip="Week 2 – Analyse & research"><img src="wagon.webp" alt="Week 2"></a>
-        <a class="wagon" href="week3.html" data-tip="Week 3 – Kleur & typografie"><img src="wagon.webp" alt="Week 3"></a>
-        <a class="wagon" href="week4.html" data-tip="Week 4 – Structuur & hiërarchie"><img src="wagon.webp" alt="Week 4"></a>
-        <a class="wagon" href="week5.html" data-tip="Week 5 – Variaties & iteraties"><img src="wagon.webp" alt="Week 5"></a>
-        <a class="wagon" href="week6.html" data-tip="Week 6 – Uitwerking in detail"><img src="wagon.webp" alt="Week 6"></a>
-        <a class="wagon" href="week7.html" data-tip="Week 7 – Context van het scherm"><img src="wagon.webp" alt="Week 7"></a>
-        <a class="wagon" href="week8.html" data-tip="Week 8 – Animatie & dynamiek"><img src="wagon.webp" alt="Week 8"></a>
-        <a class="wagon" href="week9.html" data-tip="Week 9 – Feedback & testen"><img src="wagon.webp" alt="Week 9"></a>
-        <a class="wagon" href="week10.html" data-tip="Week 10 – Finale reflectie"><img src="wagon.webp" alt="Week 10"></a>
-      </nav>
-
-      <div class="mini-train">🚆</div>
+      <div class="rail">
+        <a class="wagon" href="week1.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 1</div></a>
+        <a class="wagon" href="week2.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 2</div></a>
+        <a class="wagon" href="week3.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 3</div></a>
+        <a class="wagon" href="week4.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 4</div></a>
+        <a class="wagon" href="week5.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 5</div></a>
+        <a class="wagon" href="week6.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 6</div></a>
+        <a class="wagon" href="week7.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 7</div></a>
+        <a class="wagon" href="week8.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 8</div></a>
+        <a class="wagon" href="week9.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 9</div></a>
+        <a class="wagon" href="week10.html"><div class="wagon-body"></div><div class="wheel"></div><div class="label">Week 10</div></a>
+      </div>
 
     </div>
   </main>
