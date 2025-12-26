@@ -1,57 +1,133 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>🌱 Week 1 – Start en concept | Lost in Tra(i)nslation</title>
-    <!-- Koppeling naar je CSS-bestand (optioneel, maar aangeraden) -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌱 Week 1 – Start en concept | Lost in Tra(i)nslation</title>
+
+  <!-- Google Fonts (zelfde als startpagina) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Zelfde look & feel als index -->
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-color: #cfe3f4; /* effen lichtblauw */
+      color: #0b1d33;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 56px 24px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    /* Terug knop */
+    .back {
+      display: inline-block;
+      text-decoration: none;
+      color: #0b1d33;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 28px;
+    }
+
+    .back:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    /* Titelblok zoals cover-vibe */
+    .week-title {
+      line-height: 1;
+      margin: 0 0 6px 0;
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: clamp(44px, 6vw, 72px);
+      letter-spacing: -0.6px;
+    }
+
+    .subtitle {
+      margin: 0 0 28px 0;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(34px, 4.5vw, 54px);
+      opacity: 0.95;
+    }
+
+    /* Content */
+    h2 {
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      font-size: 22px;
+      margin: 26px 0 10px 0;
+      letter-spacing: -0.2px;
+    }
+
+    p {
+      margin: 0 0 14px 0;
+      line-height: 1.7;
+      font-size: 16px;
+      opacity: 0.92;
+    }
+
+    em { font-style: italic; }
+
+    /* Kleine scheidingslijn (subtiel) */
+    .divider {
+      height: 1px;
+      background: rgba(11, 29, 51, 0.18);
+      margin: 22px 0 10px;
+      border: 0;
+    }
+  </style>
 </head>
+
 <body>
-    <header class="site-header">
-        <nav class="main-nav">
-            <a href="index.html" class="logo">Lost in Tra(i)nslation</a>
-            <ul>
-                <li><a href="index.html">🏠 Home</a></li>
-                <li><a href="week1.html">🌱 Week 1</a></li>
-                <li><a href="week2.html">🔎 Week 2</a></li>
-                <li><a href="week3.html">🎨 Week 3</a></li>
-                <li><a href="week4.html">📐 Week 4</a></li>
-                <li><a href="week5.html">🧩 Week 5</a></li>
-                <li><a href="week6.html">🛠️ Week 6</a></li>
-                <li><a href="week7.html">🚉 Week 7</a></li>
-                <li><a href="week8.html">📺 Week 8</a></li>
-                <li><a href="week9.html">🧪 Week 9</a></li>
-                <li><a href="week10.html">🎯 Week 10</a></li>
-            </ul>
-        </nav>
-    </header>
+  <main>
+    <div class="wrap">
+      <a class="back" href="index.html">← Terug naar startpagina</a>
 
-    <main class="container">
-        <h1>🌱 Week 1 – Start en concept</h1>
+      <h1 class="week-title">🌱 Week 1</h1>
+      <p class="subtitle">Start en concept</p>
 
-        <h2>Doel van deze week</h2>
-        <p>
-            Deze week begon ik met het verkennen van het project 
-            <em>Lost in Tra(i)nslation</em>. Ik las de briefing en dacht na over de kern 
-            van het probleem: hoe kan een meertalig treininformatiesysteem duidelijk 
-            en gebruiksvriendelijk zijn voor alle reizigers?
-        </p>
+      <hr class="divider" />
 
-        <h2>Beslissingen</h2>
-        <p>
-            Ik besloot te werken met een eenvoudige informatiestructuur waarin 
-            Nederlands, Frans en Engels in één scherm gecombineerd worden. Het doel is 
-            om taalverwarring te beperken door kleur en iconen te gebruiken als extra 
-            communicatiemiddelen. Reizigers moeten in één oogopslag het symbool kunnen 
-            volgen: dit symbool wijst de weg, ongeacht de taal.
-        </p>
+      <h2>Doel van deze week</h2>
+      <p>
+        Deze week begon ik met het verkennen van het project
+        <em>Lost in Tra(i)nslation</em>. Ik las de briefing en dacht na over de kern
+        van het probleem: hoe kan een meertalig treininformatiesysteem duidelijk
+        en gebruiksvriendelijk zijn voor alle reizigers?
+      </p>
 
-        <h2>Reflectie</h2>
-        <p>
-            Ik merk dat het moeilijk is om alle talen in één scherm overzichtelijk te 
-            houden. Volgende week wil ik experimenteren met visuele hiërarchie via 
-            lettertypes en witruimte, zodat bepaalde informatie duidelijker naar voren komt.
-        </p>
-    </main>
+      <h2>Beslissingen</h2>
+      <p>
+        Ik besloot te werken met een eenvoudige informatiestructuur waarin
+        Nederlands, Frans en Engels in één scherm gecombineerd worden. Het doel is
+        om taalverwarring te beperken door kleur en iconen te gebruiken als extra
+        communicatiemiddelen. Reizigers moeten in één oogopslag het symbool kunnen
+        volgen: dit symbool wijst de weg, ongeacht de taal.
+      </p>
+
+      <h2>Reflectie</h2>
+      <p>
+        Ik merk dat het moeilijk is om alle talen in één scherm overzichtelijk te
+        houden. Volgende week wil ik experimenteren met visuele hiërarchie via
+        lettertypes en witruimte, zodat bepaalde informatie duidelijker naar voren komt.
+      </p>
+    </div>
+  </main>
 </body>
 </html>
