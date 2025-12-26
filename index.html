@@ -126,15 +126,25 @@
     }
 
     /* ======= Train wagons navigation ======= */
-    .rail{
-      width: min(1200px, 100%);
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-top: 14px;
-      padding-bottom: 10px;
+.rail{
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 0;                     /* wagons tegen elkaar */
+  overflow-x: auto;           /* horizontaal scrollen */
+  padding: 20px 0 28px;
+  scroll-snap-type: x mandatory;
+}
+
+.rail::-webkit-scrollbar{
+  height: 8px;
+}
+
+.rail::-webkit-scrollbar-thumb{
+  background: rgba(11,29,51,0.25);
+  border-radius: 999px;
+}
+
     }
 
     .wagon{
@@ -400,3 +410,4 @@
   </main>
 </body>
 </html>
+
