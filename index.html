@@ -171,6 +171,20 @@
   opacity: 1;
   transform: translateY(-3px) scale(1.05);
 }
+.pdf-text{
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;              /* 👈 VERBERGT TEKST */
+  visibility: hidden;      /* 👈 EXTRA zekerheid */
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.pdf-link:hover .pdf-text{
+  opacity: 0.85;
+  visibility: visible;
+  transform: translateX(0);
+}
 
   </style>
 </head>
@@ -214,6 +228,7 @@
   </main>
 </body>
 </html>
+
 
 
 
